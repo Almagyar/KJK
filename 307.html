@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Tűzhegy Varázslója – 307. fejezet</title>
+  
+<style>
+  :root {
+    --bg: #1a1208;
+    --bg2: #231a0e;
+    --gold: #c9a84c;
+    --gold2: #f0d080;
+    --text: #e8d9b5;
+    --text-dim: #a89060;
+    --red: #8b1a1a;
+    --border: #4a3010;
+    --shadow: rgba(0,0,0,0.6);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    background-image: 
+      radial-gradient(ellipse at top, #2a1a08 0%, #1a1208 70%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234a3010' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .container {
+    max-width: 720px;
+    width: 100%;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border);
+  }
+  header .subtitle {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  header h1 {
+    color: var(--gold);
+    font-size: 1.8rem;
+    text-shadow: 0 0 20px rgba(201,168,76,0.4);
+  }
+  .chapter-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 4px 30px var(--shadow);
+    position: relative;
+  }
+  .chapter-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .chapter-num {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px rgba(201,168,76,0.5);
+    font-family: 'Georgia', serif;
+  }
+  .chapter-num::before { content: '— '; }
+  .chapter-num::after { content: ' —'; }
+  .chapter-text {
+    line-height: 1.85;
+    font-size: 1.05rem;
+    color: var(--text);
+  }
+  .chapter-text p {
+    margin-bottom: 1em;
+  }
+  .chapter-text a {
+    color: var(--gold2);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--gold);
+    font-weight: bold;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .chapter-text a:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+  }
+  .nav-bar {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .nav-bar a {
+    color: var(--text-dim);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 0.4rem 1rem;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+  }
+  .nav-bar a:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.08);
+  }
+  footer {
+    text-align: center;
+    margin-top: 2.5rem;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+  /* Index specific */
+  .rules-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .rules-section:last-child { border-bottom: none; }
+  .rules-section h2 {
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .rules-section p {
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 0.7em;
+  }
+  .rules-section ol, .rules-section ul {
+    padding-left: 1.5rem;
+    margin-bottom: 0.7em;
+  }
+  .rules-section li {
+    line-height: 1.8;
+    margin-bottom: 0.3em;
+  }
+  .start-btn {
+    display: block;
+    text-align: center;
+    margin: 2rem auto 0;
+    width: fit-content;
+    background: linear-gradient(135deg, #8b2500, #c94040);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.9rem 2.5rem;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-family: Georgia, serif;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(139,37,0,0.5);
+    transition: all 0.2s;
+    border: 1px solid #c94040;
+  }
+  .start-btn:hover {
+    background: linear-gradient(135deg, #a33000, #e05050);
+    box-shadow: 0 6px 20px rgba(139,37,0,0.7);
+    transform: translateY(-1px);
+  }
+  .index-title {
+    color: var(--gold);
+    font-size: 2rem;
+    text-shadow: 0 0 20px rgba(201,168,76,0.4);
+    margin-bottom: 0.3rem;
+  }
+  .index-subtitle {
+    color: var(--text-dim);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+</style>
+
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="subtitle">A Tűzhegy Varázslója</div>
+      <h1>Kalandkönyv</h1>
+    </header>
+    <div class="chapter-box">
+      <div class="chapter-num">307</div>
+      <div class="chapter-text">
+        <p>Az út tekereg, kanyarog, és végül egy tömör vasajtónál ér véget. Hallgatózol, de semmi nesz. Ha megpróbálod kinyitni az ajtót, lapozz a <a href="134.html">134</a>-re, ha visszamész az elágazáshoz, lapozz a <a href="87.html">87</a>-re.</p>
+
+      </div>
+    </div>
+    <div class="nav-bar">
+      <a href="306.html">← 306</a>
+      <a href="index.html">⚔ Szabályzat</a>
+      <a href="308.html">308 →</a>
+    </div>
+    <footer>Steve Jackson &amp; Ian Livingstone · Fordította: Fekete Miklós</footer>
+  </div>
+</body>
+</html>
