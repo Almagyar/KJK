@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Tűzhegy Varázslója – Szabályzat</title>
+  
+<style>
+  :root {
+    --bg: #1a1208;
+    --bg2: #231a0e;
+    --gold: #c9a84c;
+    --gold2: #f0d080;
+    --text: #e8d9b5;
+    --text-dim: #a89060;
+    --red: #8b1a1a;
+    --border: #4a3010;
+    --shadow: rgba(0,0,0,0.6);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    background-image: 
+      radial-gradient(ellipse at top, #2a1a08 0%, #1a1208 70%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234a3010' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .container {
+    max-width: 720px;
+    width: 100%;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border);
+  }
+  header .subtitle {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  header h1 {
+    color: var(--gold);
+    font-size: 1.8rem;
+    text-shadow: 0 0 20px rgba(201,168,76,0.4);
+  }
+  .chapter-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 4px 30px var(--shadow);
+    position: relative;
+  }
+  .chapter-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .chapter-num {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px rgba(201,168,76,0.5);
+    font-family: 'Georgia', serif;
+  }
+  .chapter-num::before { content: '— '; }
+  .chapter-num::after { content: ' —'; }
+  .chapter-text {
+    line-height: 1.85;
+    font-size: 1.05rem;
+    color: var(--text);
+  }
+  .chapter-text p {
+    margin-bottom: 1em;
+  }
+  .chapter-text a {
+    color: var(--gold2);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--gold);
+    font-weight: bold;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .chapter-text a:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+  }
+  .nav-bar {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .nav-bar a {
+    color: var(--text-dim);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 0.4rem 1rem;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+  }
+  .nav-bar a:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.08);
+  }
+  footer {
+    text-align: center;
+    margin-top: 2.5rem;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+  /* Index specific */
+  .rules-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .rules-section:last-child { border-bottom: none; }
+  .rules-section h2 {
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .rules-section p {
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 0.7em;
+  }
+  .rules-section ol, .rules-section ul {
+    padding-left: 1.5rem;
+    margin-bottom: 0.7em;
+  }
+  .rules-section li {
+    line-height: 1.8;
+    margin-bottom: 0.3em;
+  }
+  .start-btn {
+    display: block;
+    text-align: center;
+    margin: 2rem auto 0;
+    width: fit-content;
+    background: linear-gradient(135deg, #8b2500, #c94040);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.9rem 2.5rem;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-family: Georgia, serif;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(139,37,0,0.5);
+    transition: all 0.2s;
+    border: 1px solid #c94040;
+  }
+  .start-btn:hover {
+    background: linear-gradient(135deg, #a33000, #e05050);
+    box-shadow: 0 6px 20px rgba(139,37,0,0.7);
+    transform: translateY(-1px);
+  }
+  .index-title {
+    color: var(--gold);
+    font-size: 2rem;
+    text-shadow: 0 0 20px rgba(201,168,76,0.4);
+    margin-bottom: 0.3rem;
+  }
+  .index-subtitle {
+    color: var(--text-dim);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+</style>
+
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="subtitle">Steve Jackson &amp; Ian Livingstone</div>
+      <h1 class="index-title">A Tűzhegy Varázslója</h1>
+      <p class="index-subtitle">The Warlock of Firetop Mountain · Fordította: Fekete Miklós</p>
+    </header>
+    <div class="chapter-box">
+      <div class="rules-section"><p>A mű eredeti címe: The Warlock of Firetop Mountain</p>
+<p>Fordította: Fekete Miklós</p>
+<p>Russ Nicholson illusztrációival</p>
+<p>© Steve Jackson and Ian Livingstone, 1982 Hungarian translation Fekete Miklós, 1989</p>
+<p>Ennek a könyvnek Te vagy a hőse. Te vívsz meg a kocka segítségével az óriásokkal és a szörnyekkel, magad döntesz, hogy merre haladj tovább, kivel barátkozz, csatázz. Nem pusztán az író fantáziája irányítja a történetet, hanem a te bátorságod, kíváncsiságod, leleményességed, kalandvágyad és józan eszed is. Játék és regény egyszerre, amit a kezedben tartasz. Kalandos vállalkozás, amelybe belebukni is lehet, de ha jól döntesz, sikerrel jársz. Így hát ezt a könyvet ne úgy olvasd, ahogy azt megszoktad. Mint látod, itt még az oldalak sincsenek megszámozva a bevezető után. A - hosszabbrövidebb - bekezdések viselnek számokat egytől négyszázig. Ezek között előre-hátra lapozva haladsz előre a történetben a saját igényeid szerint. Ha kardot rántasz az ellenségre, máshová lapozol, mint amikor elbújnál előle. Barbár harcosok, varázslók, szörnyetegek, törpék népesítik be ezt a fantasztikus világot. Mi kell ahhoz, hogy ne bukj el közöttük? Csak az, ami a mindennapi élethez is: ügyesség, jártasság, ötletesség; az, hogy felkészülten várd a nehézségeket. És Szerencse, amely nélkül az előző három talán mit sem ér, de ha csak erre számítasz, biztosan cserbenhagy. Hogy mit jelent az ÜGYESSÉG, ÉLETERŐ és SZERENCSE ebben a könyvben, megtudod a következőkből. Ha netán nem lenne teljesen világos a dolog,</p>
+<p>ne törődj vele; bátran előre! Vágj neki az olvasásnak, menet közben minden a helyére kerül! De ha elfelejtenéd, hogyan kell jól megvívni egy csatát, hogyan menekülhetsz, hogyan gyógyíthatod magad a játék szabályai szerint, nyugodtan visszalapozhatsz.</p>
+<p>Hogyan küzdj meg az alvilág teremtményeivel?</p>
+<p>Mielőtt belevágnál ebbe a kalandba, fel kell mérned, mennyire vagy erős, illetve gyenge. Van egy kardod, egy pajzsod, és egy hátizsákod étellel, itallal az útra, meg. Felkészültél a feladatra, megtanultál a karddal bánni, és keményen edzettél, hogy erős légy. Hogy megtudd, milyen hatékonyak voltak előkészületeid, dobókockával döntsd el kezdő ÜGYESSÉG és ÉLETERŐ pontjaidat. A 16. oldalon találod a Kalandlapot, amelyre feljegyezheted kalandod részleteit. Ugyanitt jelölheted ÜGYESSÉG és ÉLETERŐ pontjaidat is. Jól teszed, ha ceruzával írod a pontokat a Kalandlapra vagy fénymásolatot készíttetsz erről az oldalról, hogy azt újabb játékra is felhasználhasd.</p>
+</div><div class="rules-section"><h2>ÜGYESSÉG, ÉLETERŐ ÉS SZERENCSE</h2><p>Dobj egy kockával. Adj 6-ot a dobott számhoz, és az összeget írd be a Kalandlap ÜGYESSÉG négyzetébe. Dobj két kockával, és az eredményhez adjál 12-t, a kapott számot írd be az ÉLETERŐ négyzetbe. Van egy SZERENCSE rovat is. Ehhez egy kockával dobj, és 6-ot adj az eredményhez, majd az összeget írd be a SZERENCSE négyzetbe. Különböző okok miatt, melyeket majd részletesen elmagyarázunk, ÜGYESSÉG, ÉLETERŐ és SZERENCSE pontjaid a kalandok során folyamatosan</p>
+<p>változnak. Pontosan kell vezetned őket, ezért azt tanácsoljuk, hogy kis betűkkel írj a négyzetekbe vagy tarts kéznél radírt. De soha ne töröld ki a kezdeti pontjaidat, mert bár további ÜGYESSÉG, ÉLETERŐ és SZERENCSE pontokat szerezhetsz, összegük soha nem haladhatja meg a kezdeti értéket, kivéve néhány nagyon ritka alkalmat, amikor a megfelelő oldalon ezt az utasítást kapod. ÜGYESSÉG pontjaid kardvívó tudásodat és általános harci tapasztalatodat mutatják. Nem árt minél több ilyen pontra szert tenni. Az ÉLETERŐ pontok jelzik kondíciódat, az akaraterődet, hogy túlélj egy-egy helyzetet, továbbá eltökéltségedet, állóképességedet; minél magasabb az ÉLETERŐ pontszám, annál hoszszabb ideig maradhatsz életben. A SZERENCSE pontok mutatják, mennyire vagy szerencsés ember. A szerencse és a varázslat az úr abban a fantasztikus birodalomban, amelybe most behatolsz.</p>
+</div><div class="rules-section"><h2>A CSATA</h2><p>Sűrűn találsz majd olyan oldalakat, ahol azt az utasítást kapod, hogy küzdj meg valamilyen teremtménynyel. Lehet, hogy lesz választási lehetőséged; de ha nem, vagy ha úgy döntesz, hogy vállalod a harcot, azt a következő módon kell megvívnod: Először is jegyezd fel a teremtmény ÜGYESSÉGÉT és ÉLETEREJÉT a Kalandlapod első üres, „Harc Szörnyekkel” feliratot viselő rovatába. A teremtmények pontszámait minden alkalommal megadja a könyv, amikor összecsapsz valamelyikükkel.</p>
+<p>A harc menete 1. Dobj két dobókockával a teremtmény nevében. A kapott számot add az ő ÜGYESSÉG pontjaihoz. Az összeg az ő TÁMADÓEREJE. 2. Dobj két kockával most magadnak, és az eredményt add saját jelenlegi ÜGYESSÉG pontjaidhoz. Ez a te TÁMADÓERŐD. 3. Ha a te TÁMADÓERŐD nagyobb, mint a teremtményé, akivel küzdesz, megsebezted. Menj tovább a 4. lépésre. Ha a teremtmény TÁMADÓEREJE nagyobb, ő sebzett meg téged, és haladj az 5. lépéshez. Ha a két TÁMADÓERŐ egyforma, kivédtétek egymás csapását, és a következő Fordulót az 1. lépéstől elölről kezdheted. 4. Megsebezted a teremtményt, ezért vonj le 2 pontot az ÉLETEREJÉBŐL. Felhasználhatod SZERENCSÉDET is, hogy további sebeket ejts rajta (lásd odébb). 5. A teremtmény sebzett meg téged, ezért vonj le 2 pontot saját ÉLETERŐDBŐL. De ilyenkor is lehet SZERENCSÉD (lásd odébb). 6. Ellenőrizd a teremtmény vagy a saját ÉLETERŐ pontjaidat, és a SZERENCSE pontokat is, ha a SZERENCSÉHEZ folyamodtál. 7. Kezdd el a következő Fordulót meglévő ÜGYESSÉG pontjaiddal, azaz ismételd meg a lépéseket 16-ig. Addig játszhatsz, amíg vagy a te, vagy a teremtmény ÉLETERŐ pontjai el nem fogynak (halál).</p>
+</div><div class="rules-section"><h2>MENEKÜLÉS</h2><p>Bizonyos oldalakon eldöntheted, hogy megfutamodsze a csatából, ha a dolgok rosszul alakulnak. Ám ha megfutamodsz, menekülés közben a teremtmény automatikusan sebet ejt rajtad (ezért 2 ÉLETERŐ pontot kell levonnod.) Ez a gyávaság ára. Ám ilyenkor is hasznát veheted a SZERENCSÉNEK (lásd odébb). De csak akkor menekülhetsz, ha az adott oldalon erre külön megkapod a lehetőséget.</p>
+</div><div class="rules-section"><h2>TEREMTMÉNNYEL</h2><p>Ha egynél több lénnyel kerülnél egyszerre összeütközésbe, mindig közöljük veled a harcra vonatkozó utasítást az adott pont alatt. Néha egyszerre kell velük megküzdened, néha meg mindegyikkel külön-külön.</p>
+</div><div class="rules-section"><h2>SZERENCSE</h2><p>Kalandjaid során, akár csatában, akár olyan helyzetekben, amikor a SZERENCSE dönthet sorsod alakulásában (az erre vonatkozó utasítást az adott fejezetpontok alatt megkapod), a SZERENCSÉDRE is számíthatsz, hogy az események kimenetele számodra kedvező legyen. De vigyázz! A SZERENCSÉRE számítani kockázatos, és ha balszerencsés vagy, az eredmény végzetes lehet.</p>
+<p>SZERENCSÉDET a következő módon teheted próbára. Dobj két kockával. Ha a kapott szám nem nagyobb, mint a jelenlegi SZERENCSE pontszámod, az eredmény kedvező. Ha magasabb számot dobsz, mint a jelenlegi SZERENCSE pontszámod, balszerencséd volt, és vállald a következményeit. Úgy hívjuk ezt, hogy „Tedd próbára SZERENCSÉD!”. Minden alkalommal, amikor próbára teszed SZERENCSÉDET, 1 pontot le kell vonnod SZERENCSE pontszámodból. Így hamar rájössz, hogy a SZERENCSÉRE hagyatkozni kockázatos vállalkozás.</p>
+</div><div class="rules-section"><h2>A SZERENCSE használata csatában</h2><p>A könyv bizonyos oldalain felszólítunk, hogy Tedd próbára SZERENCSÉDET!, és közöljük, hogy SZERENCSÉD volt vagy sem. A csatákban azonban mindig te döntesz, hogy a SZERENCSÉD segítségével megpróbálsz-e komolyabb sebet ejteni azon a teremtményen, amelyet éppen megsebeztél, vagy csökkenteni annak a sebnek a hatását, amelyet a teremtménytől elszenvedtél. Ha te sebezted meg a teremtményt, a fent leírt módon Tedd próbára a SZERENCSÉDET! Ha szerencsés vagy, komoly sebet ejtettél rajta, 2 külön pontot levonhatsz a teremtmény ÉLETEREJÉBŐL. Azonban, ha balszerencsés vagy, a seb puszta karcolás, és 1 pontot vissza kell adnod ellenfeled ÉLETERŐ pontjaihoz. (Tehát: a szabályos 2 pont levonás helyett most csak 1 pontot vonhatsz le tőle.) Ha a teremtmény sebzett meg téged, azért Tedd próbára a SZERENCSÉDET, hogy csökkentsd a sebet. Ha SZERENCSÉD van, sikerült elkerülnöd a teljes csapást. 1 pontot visszaadsz magadnak (2 pontos kár</p>
+<p>helyett csak 1 pontos kár keletkezett ÉLETERŐDBEN). Ha nem voltál szerencsés, komolyabb találat ért, plusz 1 ÉLETERŐ pontot vonj le magadtól. Ne feledd, hogy minden alkalommal le kell vonnod 1 pontot adott SZERENCSE pontszámodból, ahányszor próbára teszed a SZERENCSÉDET!</p>
+</div><div class="rules-section"><h2>ÜGYESSÉG</h2><p>ÜGYESSÉG pontjaid nem sokat fognak változni kalandjaid során. Helyenként, egy-egy oldalon olyan utasítást találsz, hogy növeld vagy csökkentsd ÜGYESSÉG pontjaid számát. Egy csodafegyver növelheti ÜGYESSÉGEDET, de ne feledd, hogy egyszerre csak egy fegyvert használhatsz. Nem tarthatsz igényt 2 ÜGYESSÉG jutalompontra, mert két varázskardod van. ÜGYESSÉG pontjaid száma soha nem lépheti túl az eredeti értékét, hacsak külön utasítást nem kapsz rá. Ha iszol az ÜGYESSÉG Italából (lásd később), bármikor a kezdeti értékére áll vissza</p>
+</div><div class="rules-section"><h2>ÉLETERŐ ÉS ÉLELMISZER</h2><p>ÉLETERŐ pontjaid sokszor fognak változni kalandjaid során, amint megküzdesz a szörnyekkel és lelkesítő feladatokat vállalsz. Ahogy célodhoz közeledsz, ÉLETERŐ pontjaidnak száma veszélyesen csökkenhet, és a csaták különösen kockázatossá válnak, ezért légy óvatos! Hátizsákodban tíz étkezésre elegendő élelmiszer van. Bármikor megállhatsz pihenni és enni, kivéve, ahol erre más utasítást kapsz, és csak egy élelmiszeradagot fogyaszthatsz el. Minden étkezés 4 pontot ad ÉLETERŐ pontjaidhoz, és 1 ponttal csökkenti Élelmiszer-tartalékodat. A Kalandlapon külön Élelmiszerkészlet rovat van, hogy feljegyezd, mennyit fogyasztottál. Ne feledd, hogy hosszú utat kell megtenned, ezért bölcsen használd fel Élelmiszerkészletedet! Azt se feledd, hogy ÉLETERŐ pontjaid száma sohasem lépheti túl a kezdeti értéket, kivéve, ha egy adott oldalon ezt az utasítást kaptad. Az Erőital megivásával (lásd később) bármikor eredeti szintjére állíthatod</p>
+</div><div class="rules-section"><h2>SZERENCSE</h2><p>SZERENCSE pontjaidhoz továbbiakat szerezhetsz kalandjaid során, ha kivételesen SZERENCSÉS vagy. Ennek részleteit megtalálod a könyvben. Ne feledd, hogy az ÜGYESSÉGHEZ és az ÉLETERŐHÖZ hasonlóan SZERENCSE pontjaid sem léphetik túl kezdeti értéküket, kivéve, ha egy-egy oldalon ezt az utasítást kapod. A SZERENCSE Italát felhörpintve (lásd később) bármikor kezdeti értékére állíthatod vissza</p>
+<p>SZERENCSÉDET és 1 ponttal növelheted kezdeti</p>
+</div><div class="rules-section"><h2>FELSZERELÉS ÉS ITALOK</h2><p>Minimális felszereléssel kezded kalandodat, de utad során találhatsz vagy vásárolhatsz holmikat. Karddal vagy felfegyverezve, és bőrpáncélt viselsz. Hátizsákodban étel, ital és azok a kincsek vannak, amelyeket megszerzel. Egy lámpásod is van, amely megvilágítja utadat. Emellett magaddal vihetsz egy palackkal a Varázsitalból; ez segít rajtad kutatásod során. A következő palackok bármelyikét választhatod: Az ÜGYESSÉG ITALA - kezdeti értékére állítja vissza ÜGYESSÉG pontjaidat. Az ERŐ ITALA - kezdeti értékére állítja vissza ÉLETERŐ pontjaidat. A SZERENCSE ITALA - kezdeti értékére állítja vissza SZERENCSE pontjaidat, és 1 ponttal növeli kezdeti</p>
+</div><div class="rules-section"><h2>SZERENCSÉDET.</h2><p>Kalandjaid során bármikor kortyolhatsz a magaddal vitt italból (kivéve, amikor harcban állsz). Ezeknek az italoknak egy adagja visszaállítja ÜGYESSÉGED, ÉLETERŐD vagy SZERENCSÉD kezdeti értékét (és a SZERENCSE ITALA 1 ponttal növeli kezdeti SZERENCSÉDET). Minden palack kétadagnyi varázsitalt tartalmaz, tehát kétszer élhetsz vele kalandjaid során. Jegyezd fel a Kalandlapon, ha elhasználtad. Azt se feledd, hogy a háromféle ital közül csak az egyiket viheted magaddal az útra, válassz tehát bölcsen!</p>
+</div><div class="rules-section"><h2>TANÁCSOK A JÁTÉKHOZ</h2><p>Egyetlen helyes út vezet el a Varázsló útvesztőjén keresztül, és csak többszöri próbálkozásra találod azt meg. Jegyzetelj és készíts térképet utad során, ez felbecsülhetetlen értékű lesz az elkövetkező kalandjaidban, és segít, hogy gyorsan keresztüljuss a felderítetlen részeken. Nem minden szoba rejt kincseket. Sokszor csupán csapdák vagy olyan lények várnak rád, melyekkel összeütközésbe kerülsz. Sok hamis nyom van, és még ha sikerrel jutsz is át a Labirintuson, csak akkor kaparinthatod meg a Varázsló kincsét, ha útközben bizonyos tárgyakra szert teszel. Sokféle kulcsot találsz majd a Labirintus szobáiban, de csak akkor tudod a Varázsló ládáját kinyitni, és megszerezni kincsét, ha rendelkezel a megfelelő kulcsokkal… Nem egyszer csalódás fog érni a hegy belsejében. Az egyetlen igazi út minimális kockázatot jelent, és minden játékos, függetlenül attól, milyen pontokkal vág neki, elég könnyen végigmehet rajta. Kísérjen szerencse kalandjaid során! Sok sikert!</p>
+</div><div class="rules-section"><h2>Háttér</h2><p>Csak egy vakmerő kalandor vágna bele egy ilyen veszélyes vállalkozásba - mint ez a kincskeresés anélkül, hogy előtte ne próbálna meg minden lehetségeset megtudni a hegyről és a kincsről. Mielőtt elmennél a Tűzhegy birodalmába, néhány napot egy környékbeli falu lakosai között töltesz vagy kétnapnyi járásra a hegytől. Mivel rokonszenves vagy nekik, könnyen kapcsolatba kerülsz a helyi parasztokkal. Bár sokféle történetet mesélnek el neked a titokzatos Varázslóról és rejtekhelyéről, egyáltalán nem vagy benne biztos, hogy a történetek mindegyike, vagy akár csak egy is, valóban igaz-e. A falusiak sok kalandvágyó embert láttak már a hegyhez vezető úton, de közülük csak nagyon kevesen tértek vissza. Most már biztosan tudod, hogy az előtted álló Út különösen veszedelmes lesz. Azok közül, akik vissza- jutottak a faluba, még senki sem kísérelte meg, hogy visszamerészkedjen a hegyhez. Úgy érzed, elképzelhető, hogy valóban létezik a Varázsló, és hogy a kincseit egy pompás ládában rejtegeti, és melynek kulcsait különféle lények őrzik az útvesztőben. A Varázsló hatalmas mágikus erővel rendelkezik. Egyesek szerint fiatal, mások szerint Öreg. Néhányan úgy vélik, erejét egy csomag bűvös kártyából meríti, mások azt vallják, hatalmát a kezén viselt fekete selyemkesztyű adja. A hegy gyomrába vezető bejáratot egy csapat bibircsókos arcú Goblin őrzi. Ezeket a buta teremtményeket nem érdekli más, csak az eszem-iszom. Továbbjutva, a belső kamrákban már jóval félelmetesebb lények vannak. Ahhoz, hogy a belső termekbe el le-</p>
+<p>hessen jutni, át kell kelni egy folyón. A kompszolgálat rendszeres, de a révész ingyen nem visz át, úgyhogy néhány aranyat félre kell tenned, ha át akarsz kelni a folyón. A helyiek azt is tanácsolják, hogy vezess térképet kóborlásaidról, mert enélkül reménytelenül el fogsz tévedni a hegy belsejében. Mikor az indulás napja elérkezik, az egész falu aprajanagyja megjelenik, hogy szerencsés utat kívánjon neked. Nem egy nőnek - fiatalnak, öregnek egyaránt könny csillog a szemében. Nem tudsz szabadulni a gondolattól, hogy ezek a részvét könnyei, s olyan szemekben csillognak, melyeket tán sohasem látsz viszont... És most lapozz!</p>
+</div>
+      <a class="start-btn" href="1.html">⚔ Kezdd el a kalandot! →</a>
+    </div>
+    <footer>© Steve Jackson and Ian Livingstone, 1982 · Hungarian translation Fekete Miklós, 1989</footer>
+  </div>
+</body>
+</html>
